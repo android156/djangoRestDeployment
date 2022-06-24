@@ -34,7 +34,7 @@ class App extends React.Component {
 
     load_data() {
         const headers = this.get_headers()
-        axios.get('http://127.0.0.1:8000/api/users/', {headers})
+        axios.get('http://134.0.115.241:8000/api/users/', {headers})
             .then(response => {
                 const users = response.data.results
                 this.setState(
@@ -46,7 +46,7 @@ class App extends React.Component {
             console.log(error)
             this.setState({'users': []})
         })
-        axios.get('http://127.0.0.1:8000/api/projects/', {headers})
+        axios.get('http://134.0.115.241:8000/api/projects/', {headers})
             .then(response => {
                 const projects = response.data.results
                 this.setState(
@@ -58,7 +58,7 @@ class App extends React.Component {
             console.log(error)
             this.setState({'projects': []})
         })
-        axios.get('http://127.0.0.1:8000/api/todo/', {headers})
+        axios.get('http://134.0.115.241:8000/api/todo/', {headers})
             .then(response => {
                 const todos = response.data.results
                 this.setState(
@@ -74,7 +74,7 @@ class App extends React.Component {
 
     get_token(username, password) {
         console.log('Получение токена с бэка')
-        axios.post('http://127.0.0.1:8000/api-token-auth/', {
+        axios.post('http://134.0.115.241/api-token-auth/', {
             username: username,
             password: password
         })
@@ -118,7 +118,7 @@ class App extends React.Component {
 
     deleteTodo(uid) {
         const headers = this.get_headers()
-        axios.delete(`http://127.0.0.1:8000/api/todo/${uid}/`, {headers})
+        axios.delete(`http://134.0.115.241:8000/api/todo/${uid}/`, {headers})
             .then(response => {
                 this.setState({
                     todos: this.state.todos.filter((todo) => todo.uid !== uid)
@@ -130,7 +130,7 @@ class App extends React.Component {
     createTodo(text, user, project) {
         const headers = this.get_headers()
         const data = {text: text, user: user, project: project}
-        axios.post(`http://127.0.0.1:8000/api/todo/`, data, {headers})
+        axios.post(`http://134.0.115.241:8000/api/todo/`, data, {headers})
             .then(response => {
                 let new_todo = response.data
                 const user = this.state.users.filter((user) => user.uid === new_todo.user)[0]
