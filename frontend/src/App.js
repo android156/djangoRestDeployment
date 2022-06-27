@@ -74,7 +74,7 @@ class App extends React.Component {
 
     get_token(username, password) {
         console.log('Получение токена с бэка')
-        axios.post('http://134.0.115.241/api-token-auth/', {
+        axios.post('http://134.0.115.241:8000/api-token-auth/', {
             username: username,
             password: password
         })
